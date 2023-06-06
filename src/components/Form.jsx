@@ -31,7 +31,9 @@ export function Form() {
           document.querySelector('#display-votes').click()
           setIsLoading(false)
         }, 200);
-        localStorage.setItem('is-cat-voter', JSON.stringify(true))
+        window.addEventListener('visibilitychange', () => {
+          localStorage.setItem('is-cat-voter', JSON.stringify(true))
+        })
       } else {
         console.log('Vote submission failed');
       }
