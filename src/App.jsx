@@ -10,23 +10,37 @@ function App() {
   const [totalCatVotes,setTotalCatVotes] = useState({})
   const [selectedImg, setSelectedImg] = useState('');
   const [isLoading,setIsLoading] = useState(false)
-
+  const [alertMsg, setAlertMsg] = useState('')
+  const isVoted = () => {
+    const isVoted = JSON.parse(localStorage.getItem('is-cat-voter'))
+    if(isVoted){
+      fetch('https://cat-voter-api.render.com/get-votes')
+      .then(res => res.json())
+      .then(data => setTotalCatVotes(prev => {
+        return { votes : data.votes , total : data.votes.totalCatVotes }
+      }))
+      return true
+    }
+    return false
+  }
   const props = {
     setTotalCatVotes,
     totalCatVotes,
     selectedImg,
     setSelectedImg,
-    setIsLoading
+    setIsLoading,
+    setAlertMsg
   }
   return (<>
       <Context.Provider value={props}>
         <Routes>
-          <Route path="/" element={<Form />} />
-          <Route path="/DisplayVotes" element={<DisplayVotes />} />
-          <Route path="*" element={<h1>404</h1>} />
+            <Route path="/" element={isVoted() ? <DisplayVotes /> : <Form />} />
+            { isVoted() ? '' : <Route path="/DisplayVotes" element={<DisplayVotes />} />}
+            <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </Context.Provider>
       {isLoading ? <Loader /> : ''}
+      { alertMsg ? <AlertMsg msg={alertMsg}/> : ''}
     </>)
 }
 

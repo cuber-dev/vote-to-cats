@@ -8,6 +8,7 @@ export function Form() {
   async function handleSubmit(e) {
     e.preventDefault(); 
     setIsLoading(true)
+
     try {
       const response  = await fetch('https://cat-server.onrender.com/api/v1/voters', {
         method: 'POST',
@@ -21,12 +22,16 @@ export function Form() {
       console.log(data)
       if (data.accepted && data.votes) {
         console.log('Vote submitted successfully : ',data.cat);
+        console.log(data)
         setTotalCatVotes(prev => {
-          return { votes : data.votes }
+          return { votes : data.votes , total : data.votes.totalCatVotes }
         })
         setSelectedImg('')
-        document.querySelector('#display-votes').click()
-        setIsLoading(false)
+        setTimeout(() => {
+          document.querySelector('#display-votes').click()
+          setIsLoading(false)
+        }, 200);
+        localStorage.setItem('is-cat-voter', JSON.stringify(true))
       } else {
         console.log('Vote submission failed');
       }

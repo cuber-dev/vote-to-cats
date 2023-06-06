@@ -3,7 +3,10 @@
 
 export function ProgressBar({ percentages }){
     return (<>
-        <div className="container">
+        <div className="total">
+            Total Votes : { percentages.total ? percentages.total : 0 }
+        </div>
+        <div className="progress-container">
             <p>Cat - 01</p>
             <div className="progress">
                 <div className="progress-bar c-1" style={{ width : percentages.cat1 }} >{percentages.cat1}</div>
