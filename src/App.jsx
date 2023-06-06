@@ -4,6 +4,8 @@ import './App.css';
 import { Form } from './components/Form';
 import { DisplayVotes } from './components/DisplayVotes';
 import { Loader } from './components/Loader';
+import { AlertMsg } from './components/AlertMsg';
+
 
 export const Context = React.createContext();
 
@@ -17,18 +19,17 @@ function App() {
   useEffect(() => {
     const id = JSON.parse(localStorage.getItem('is-cat-voter'));
     if (id) {
-      console.log('existing voter');
+      setIsVoted(true);
+      setAlertMsg('You have already voted')
       fetch('https://cat-server.onrender.com/get-votes')
         .then(res => res.json())
         .then(data => {
           console.log(data);
           setTotalCatVotes(prev => ({
-            ...prev,
             votes: data.votes,
             total: data.votes.totalCatVotes
           }));
         });
-      setIsVoted(true);
     }
   }, []);
 
@@ -56,20 +57,18 @@ function App() {
             path="/"
             element={
               isVoted ? (
-                <DisplayVotes />
+                <DisplayVotes isVoted={isVoted}/>
               ) : (
-                <>
-                  <Form />
-                  {isLoading ? <Loader /> : null}
-                  {alertMsg ? <AlertMsg msg={alertMsg} /> : null}
-                </>
+                <Form />
               )
             }
           />
-          {isVoted ? <Route path="/DisplayVotes" element={<DisplayVotes />} /> : null}
-          <Route path="*" element={<h1>404</h1>} />
+          {isVoted ? '' : <Route path="/DisplayVotes" element={<DisplayVotes />} />}
+          <Route path="*" element={<h1>404 Not Found <a href="/">Go Back</a></h1>} />
         </Routes>
       </Context.Provider>
+      {isLoading ? <Loader /> : null}
+      {alertMsg ? <AlertMsg msg={alertMsg} /> : null}
     </>
   );
 }
