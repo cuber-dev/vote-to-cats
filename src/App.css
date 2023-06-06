@@ -1,0 +1,156 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 15pt;
+    padding: 1rem;
+}
+:root{
+  --c-1:  #00ffff;
+  --c-2:  #9c14d1;
+  --c-3:  #cee025;
+  --c-4:  #11e795;
+}
+
+.container{
+    margin : 1rem 0;
+}
+.grid-layout{
+  display: grid;
+  grid-template-columns: repeat(2,200px);
+}
+
+.img-box{
+  height: 150px;
+  border: 2px solid transparent;
+  border-radius: .5rem;
+  padding: .5rem;
+  margin : .3rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+}
+.img-box:not(.active){
+  filter: grayscale(90%);
+  -webkit-filter: grayscale(90%);
+}
+.img-box.active{
+  border: 2px solid #090c02;
+}
+.image{
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: .3rem;
+}
+
+.progress{
+  width : 100%;
+}
+.progress .progress-bar{
+  text-align: center;
+  padding: .2rem 0;
+  font-size: .9rem;
+  border-radius: .4rem;
+  overflow: hidden;
+  transition: all 1s ease;
+  animation: expand 1s ease 1;
+}
+
+@keyframes expand {
+  from{ width : 0%}
+}
+.img-box.active.c-1,
+.c-1{
+  background-color: var(--c-1);
+  border: 2px solid var(--c-1);
+}
+.img-box.active.c-2,
+.c-2{
+  background-color: var(--c-2);
+  border: 2px solid var(--c-2);
+}
+.img-box.active.c-3,
+.c-3{
+  background-color: var(--c-3);
+  border: 2px solid var(--c-3);
+}
+.img-box.active.c-4,
+.c-4{
+  background-color: var(--c-4);
+  border: 2px solid var(--c-4);
+}
+
+
+.btn-submit{
+  padding: .5rem 1rem;
+  background-color: #424040;
+  color: white;
+  border: 5px solid transparent;
+  border-radius: .3rem;
+  -webkit-border-radius: .3rem;
+  -moz-border-radius: .3rem;
+  -ms-border-radius: .3rem;
+  -o-border-radius: .3rem;
+  cursor: pointer;
+  transition: all 200ms linear;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -ms-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+}
+.btn-submit:hover{
+  border: 5px solid #6e6e6e;
+  opacity: 0.9;
+}
+.btn-submit:active{
+  opacity: 0.7;
+}
+label{
+    cursor: pointer;
+    padding : 0 1rem;
+}
+button{
+    margin: 1rem 0;
+}
+.loader{
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader .loader-spinner{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 5px solid white;
+  border-right-color: transparent;
+  animation: spin 1s ease infinite;
+  -webkit-animation: spin 1s ease infinite;
+}
+@keyframes spin {
+  to{
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+
+@media (max-width : 450px) {
+  body{
+    display: block;
+    padding: 0;
+  }
+  
+}
