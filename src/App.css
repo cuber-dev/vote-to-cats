@@ -133,6 +133,9 @@ label{
 button{
     margin: 1rem 0;
 }
+.error{
+  color: rgb(221, 82, 27);
+}
 .loader{
   position: fixed;
   inset: 0;

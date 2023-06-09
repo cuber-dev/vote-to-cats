@@ -25,10 +25,14 @@ function App() {
         .then(res => res.json())
         .then(data => {
           console.log(data);
-          setTotalCatVotes(prev => ({
-            votes: data.votes,
-            total: data.votes.totalCatVotes
-          }));
+          if(data.votes){
+            setTotalCatVotes(prev => ({
+              votes: data.votes,
+              total: data.votes.totalCatVotes
+            }));
+          }else{
+            setTotalCatVotes(prev => data.message)
+          }
         });
     }
   }, []);
