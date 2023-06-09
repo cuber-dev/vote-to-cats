@@ -8,28 +8,28 @@ export function ImageBox({ selectedImg }){
         <div className={`grid-layout`}>
           <div className={`img-box ${selectedImg === 'cat1' ? 'active' : ''}  ${active} ${active === 'active' ? 'c-1' : ''}`}>
             <img
-              src={`../../public/assets/cat1.jpeg`}
+              src={`/assets/cat1.jpeg`}
               className={`rounded img-fluid d-block  image`}
               alt={`image`}
             />
           </div>
           <div className={`img-box ${selectedImg === 'cat2' ? 'active' : '' } ${active} ${active === 'active' ? 'c-2' : ''}`}>
             <img
-              src={`../../public/assets/cat2.jpeg`}
+              src={`/assets/cat2.jpeg`}
               className={`rounded img-fluid d-block image`}
               alt={`image`}
             />
           </div>
           <div className={`img-box ${selectedImg === 'cat3' ? 'active' : ''} ${active} ${active === 'active' ? 'c-3' : ''}`}>
             <img
-              src={`../../vote-to-cats/public/assets/cat3.jpeg`}
+              src={`/assets/cat3.jpeg`}
               className={`rounded img-fluid d-block image`}
               alt={`image`}
             />
           </div>
           <div className={`img-box ${selectedImg === 'cat4' ? 'active' : ''} ${active} ${active === 'active' ? 'c-4' : ''}`}>
             <img
-              src={`../../public/assets/cat4.jpeg`}
+              src={`/assets/cat4.jpeg`}
               className={`rounded img-fluid d-block image`}
               alt={`image`}
             />
