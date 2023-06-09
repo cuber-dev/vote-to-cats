@@ -22,7 +22,7 @@ export function ImageBox({ selectedImg }){
           </div>
           <div className={`img-box ${selectedImg === 'cat3' ? 'active' : ''} ${active} ${active === 'active' ? 'c-3' : ''}`}>
             <img
-              src={`../../public/assets/cat3.jpeg`}
+              src={`../../vote-to-cats/public/assets/cat3.jpeg`}
               className={`rounded img-fluid d-block image`}
               alt={`image`}
             />
