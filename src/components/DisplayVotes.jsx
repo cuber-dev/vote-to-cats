@@ -7,20 +7,22 @@ export function DisplayVotes({ isVoted }) {
   const [percentages, setPercentages] = useState({});
   const [msg, setMsg] = useState('');
   const { totalCatVotes } = useContext(Context);
-
+  function sort(data){
+    const sorted = {
+      cat1: data.votes.cat1.percent,
+      cat2: data.votes.cat2.percent,
+      cat3: data.votes.cat3.percent,
+      cat4: data.votes.cat4.percent,
+      total: new Intl.NumberFormat('en-US', {
+        notation: 'compact',
+        compactDisplay: 'short',
+      }).format(data.total),
+    };
+    return sorted
+  }
   useEffect(() => {
-    if (isVoted && totalCatVotes.votes) {
-      const sorted = {
-        cat1: totalCatVotes.votes.cat1.percent,
-        cat2: totalCatVotes.votes.cat2.percent,
-        cat3: totalCatVotes.votes.cat3.percent,
-        cat4: totalCatVotes.votes.cat4.percent,
-        total: new Intl.NumberFormat('en-US', {
-          notation: 'compact',
-          compactDisplay: 'short',
-        }).format(totalCatVotes.total),
-      };
-      setPercentages(sorted);
+    if (totalCatVotes.votes) {
+      setPercentages(sort(totalCatVotes));
     } else {
       if (typeof totalCatVotes === 'string') {
         setMsg(totalCatVotes);
