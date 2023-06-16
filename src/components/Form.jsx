@@ -20,7 +20,7 @@ export function Form() {
   
       const data = await response.json();
       console.log(data)
-      if (data.accepted && data.votes) {
+      
         console.log('Vote submitted successfully : ',data.cat);
         console.log(data)
         setTotalCatVotes(prev => {
@@ -34,9 +34,7 @@ export function Form() {
         window.addEventListener('visibilitychange', () => {
           localStorage.setItem('is-cat-voter', JSON.stringify(true))
         })
-      } else {
-        console.log('Vote submission failed');
-      }
+      
     } catch (error) {
       console.log('Error occurred during vote submission:', error);
     }
