@@ -186,6 +186,7 @@ button{
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
+  white-space: nowrap;
 }
 @keyframes alert {
   0%,100%{
@@ -207,4 +208,5 @@ button{
     grid-template-columns: repeat(2,160px);
     width: 325px;
   }
+  
 }

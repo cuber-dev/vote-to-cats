@@ -21,13 +21,14 @@ function App() {
     if (id) {
       setIsVoted(true);
       setAlertMsg('You have already voted')
-      fetch('https://cat-server.onrender.com/get-votes')
+      const uri = 'https://cat-server.onrender.com/get-votes'
+      fetch('http://localhost:3000/get-votes')
         .then(res => res.json())
         .then(data => {
           if(data.votes){
-            setTotalCatVotes(prev => ({
-              votes: data.votes,
-              total: data.votes.totalCatVotes
+            setTotalCatVotes(prev => ({ 
+              votes : data.votes , 
+              total : data.total 
             }));
           }else{
             setTotalCatVotes(prev => data.message)
