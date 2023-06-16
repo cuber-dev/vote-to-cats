@@ -19,10 +19,6 @@ export function Form() {
       })
   
       const data = await response.json();
-      console.log(data)
-      
-        console.log('Vote submitted successfully : ',data.cat);
-        console.log(data)
         setTotalCatVotes(prev => {
           return { votes : data.votes , total : data.votes.totalCatVotes }
         })

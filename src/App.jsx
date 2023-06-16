@@ -24,7 +24,6 @@ function App() {
       fetch('https://cat-server.onrender.com/get-votes')
         .then(res => res.json())
         .then(data => {
-          console.log(data);
           if(data.votes){
             setTotalCatVotes(prev => ({
               votes: data.votes,
