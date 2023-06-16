@@ -10,7 +10,7 @@ export function Form() {
     setIsLoading(true)
 
     try {
-      const response  = await fetch('http://localhost:3000/api/v1/voters' || 'https://cat-server.onrender.com/api/v1/voters', {
+      const response  = await fetch('https://cat-server.onrender.com/api/v1/voters', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

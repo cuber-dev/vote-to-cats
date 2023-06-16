@@ -22,7 +22,7 @@ function App() {
       setIsVoted(true);
       setAlertMsg('You have already voted')
       const uri = 'https://cat-server.onrender.com/get-votes'
-      fetch('http://localhost:3000/get-votes')
+      fetch(uri)
         .then(res => res.json())
         .then(data => {
           if(data.votes){
